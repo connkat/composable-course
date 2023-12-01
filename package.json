@@ -1,0 +1,9 @@
+{
+  "name": "composable-course",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:connkat/composable-course.git",
+  "author": "connkat <hi.connkat@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
