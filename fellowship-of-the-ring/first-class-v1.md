@@ -52,7 +52,7 @@ function addThree(num) => {
  - Write a simple JS function and now translate it to TS. 
 
 
-
+------------------------------------------------------------------- These are just reference notes that will be removed
 ## End goal: 
 To write existing methods with Generic Syntax:
 - .map
