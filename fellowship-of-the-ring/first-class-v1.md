@@ -2,7 +2,7 @@
 
 ## Understanding Functions
 
-(I can't draw in an MD, but starting from [p1 of Laiken's notes](https://drive.google.com/drive/u/0/folders/1UmkQXJQmAskiqhdkjV3sUzObX9ud2Lu9))
+(Lakin's Diagram)[assets/class-1-functions.png]
 
 name: param -> return
 ex: 
@@ -46,47 +46,132 @@ function addThree(num) => {
  }
  ```
  - if we attempt to pass a string as an argument, typescript will stop us ahead of time and let us know that we need to send an int because we want to perform some math on the argument passed in and we can't do that with a boolean or string or another data type. 
- - Similarly, if we are calling this function and expecting an int bu receive something else as the output, we can find out ahead of time. 
+ - Similarly, if we are calling this function and expecting an int but receive something else as the output, we can find out ahead of time. 
 
  ### Translate your own function
- - Write a simple JS function and now translate it to TS. 
+ - Write a simple JS function (similar to addThree) and now translate it to TS. 
+
+ ## Understanding methods
+
+ - We take methods for granted. They do a lot of work under the hood. 
+ - You may have heard the term syntactic sugar before. It’s a term that describes syntax (ways of writing code) that provide shortcuts, and make the code easier to write or read. Array methods like map(), filter(), find(), and reduce() are considered syntactic sugar.
+
+Ironically, they often make things harder to read for beginners, because they hide what’s really happening behind the scenes.
+
+### Array.map()
+- The `Array.map()` method creates a new array from an existing one.
+- It loops through each item in the original array, transforms it in some way, and then pushes it into a new array. All of this happens behind-the-scenes.
+- For example, let’s say you had an array of numbers, and you wanted to create a new array with the numbers doubled: 
+
+```js
+let numbers = [3, 11, 42];
+let doubled = [];
+
+numbers.forEach(function (number) {
+    doubled.push(number * 2);
+})
+```
+
+- With `Array.map()`, you don’t have to create the doubled array beforehand. You can define the variable as the output of `Array.map()`.
+ - Inside the `Array.map()` callback function, return the value you want added to the array. Under-the-hood, `Array.map()` loops through each item in the original array, runs your callback method on each item, creates a new array, and pushes whatever you return to it: 
+
+```js
+let doubled = numbers.map(function (number) {
+	return number * 2;
+});
+```
+
+(live demo link)[https://codepen.io/Kat-Connolly/pen/gOyJyWN?editors=1111]
+
+### Array.filter()
+- Now it it your turn to try, we're going to work with `Array.filter()`.
+- Imagine that you have an array of data. Perhaps it’s a list of creatures from Middle Earth and their alliance and you want to find out which ones are good or bad: 
+ 
+ ```js
+ let beings = [
+	{
+		name: 'Hobbit',
+		alliance: 'good'
+	},
+	{
+		name: 'Orc',
+		alliance: 'evil'
+	},
+	{
+		name: 'Elf',
+		alliance: 'good'
+	},
+    	{
+		name: 'Uruk hai',
+		alliance: 'evil'
+	},
+	{
+		name: 'Wizard',
+		alliance: undefined
+	}
+];
+ ```
+
+ ------------------------------------------- STOP AND LET THEM TRY -------------------------------------------
+### Possible Answers: 
+
+- With `Array.forEach()`, you would create a new array. Then you would loop through the beings array and push matching beings to your new array.
+
+```js
+
+function findBaddies(beings) {
+    let baddies = [];
+
+    beings.forEach(function (being) {
+        if (being.alliance === 'evil') {
+            baddies.push(being);
+        }
+    });
+}
+```
+
+- With `Array.filter()`, you don’t have to create the new array beforehand. You can define the variable as the output of `Array.filter()`.
+
+Inside the `Array.filter()` callback function, return true if the item should be added to the new array, and false if it shouldn’t. Under-the-hood, `Array.filter()` loops through each item in the original array, runs your callback method on each item, creates a new array, and pushes the items that return true.
+
+```js
+function filterBaddies(beings){
+    let baddies = beings.filter(function (being) {
+        return being.alliance === 'evil'
+    });
+}
+```
+(live demo link)[https://codepen.io/Kat-Connolly/pen/abxrxVY?editors=1011]
+
+### Make it more reusable
+- This code is good, but it only works in this single scenario. If I try to pass it an array of objects with different key/value pairs and filter for a different value, this won't work.
+
+```js
+function filterGeneric(argArray, argKey, argValue){
+    let output = argArray.filter(function (arg) {
+        return arg.argKey === 'argValue'
+    });
+}
+```
 
 
-------------------------------------------------------------------- These are just reference notes that will be removed
-## End goal: 
-To write existing methods with Generic Syntax:
-- .map
-- .filter
-- etc
---What are these things doing internally for you? 
---How do we express them in a typesafe manner?
---How do we express them generically?
-
-## Themes: 
-1. Definitions and overview:
-- Defining the parts of a function
-- Pure vs impure/side effects
-- Referential transparency
-** Do a map/filter and see what it does
-
-2. Bigger picture and group application:
-- Overview of types, pros/cons
-- Isolate and breakdown higher order functions
-** Build your own version or map/filter
-
-3. Stepping through and independent application:
-- Step through making a common method into a generically typed one
-- Break down functions in TS
-- Generic types
---Importance of being able to pass in functions as args (high order functs)
-
-** Make existing into generic
 
 
+Maybe it should end before this? I'm thinking this + the TS/data types might be too much.
 
-------
-V1: inclusive of high order, maybe not generics
-V2: focus on small and simple functions, apply generically 
+### Convert to Typescript
+
+
+ ------------------------------------------- STOP AND LET THEM TRY -------------------------------------------
+
+```ts
+function filterBaddies(beings: array): array {
+    let baddies = beings.filter(function (being) {
+        return being.alliance === 'evil'
+    });
+}
+```
+
 
 
 
