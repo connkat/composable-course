@@ -155,23 +155,20 @@ function filterGeneric(argArray, argKey, argValue){
 ```
 
 
-
-
-Maybe it should end before this? I'm thinking this + the TS/data types might be too much.
-
-### Convert to Typescript
-
-
- ------------------------------------------- STOP AND LET THEM TRY -------------------------------------------
-
-```ts
-function filterBaddies(beings: array): array {
-    let baddies = beings.filter(function (being) {
-        return being.alliance === 'evil'
-    });
-}
-```
-
-
-
-
+---------------------
+## Notes: 
+### Missing: 
+- Single param > multi param > partial application
+** Partial Application
+- Taking a funct and refactoring it together
+    - What is static and what is dynamic? 
+    - Making a function more dynamic all the way through
+        - IE: passing in other functions, types aren't necessary (sub in generic)
+    ** this assumes that people are using Typed language
+- requires fat arrow notation, single param function 
+## V2: 
+- Focus on higher order functions with the idea of trying to end up with partial application
+- Could be JS or TS?
+    Could use this as motivation to introduce TS
+- Get through enough theory so that we can walk through things like map, and then leave them with some potential practical examples
+- Why does this help up write better code? Why do we like this?
