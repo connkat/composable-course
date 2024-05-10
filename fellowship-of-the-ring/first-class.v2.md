@@ -80,17 +80,67 @@ const num = "Joe";
     
     formatOperation(-2, Math.abs));
 ```
+---------
 
-- Single param > multi param > partial application
-** Partial Application
-- Taking a funct and refactoring it together
-    - What is static and what is dynamic? 
-    - Making a function more dynamic all the way through
-        - IE: passing in other functions, types aren't necessary (sub in generic)
-    ** this assumes that people are using Typed language
-- requires fat arrow notation, single param function 
-## V2: 
-- Focus on higher order functions with the idea of trying to end up with partial application
-- Could be JS or TS?
-    Could use this as motivation to introduce TS
-- Get through enough theory so that we can walk through things like map, and then leave them with some potential practical examples
+## Lesson 2: Partial Application 
+
+### Definitions: 
+- Application: The process of applying a function to its arguments in order to produce a return value.
+
+- Partial Application: The process of applying a function to some of its arguments. The partially applied function gets returned for later use. In other words, a function that takes a function with multiple parameters and returns a function with fewer parameters. Partial application fixes (partially applies the function to) one or more arguments inside the returned function, and the returned function takes the remaining parameters as arguments in order to complete the function application.
+
+- Curry: A function that takes a function with multiple parameters as input and returns a function with exactly one parameter.
+
+(Cool video on the topic)[https://www.youtube.com/watch?v=XcS-LdEBUkE]
+
+(A good breakdown of concepts)[https://medium.com/javascript-scene/curry-or-partial-application-8150044c78b8]
+
+---------
+## Lesson 3: Higher Order Functions
+### Pure vs impure functions
+- Impure functions have side effects: 
+    - Anything that changes about a program that can't be observed by the output  of a function
+    - EX: printing to the console, updating a DB
+
+### What is a higher order function? 
+A: In mathematics and computer science, a higher-order function (HOF) is a function that does at least one of the following:
+
+- takes one or more functions as arguments (i.e. a procedural parameter, which is a parameter of a procedure that is itself a procedure),
+- returns a function as its result.
+
+---------
+## Lesson 4: Practical application
+
+** TODO: convert these to TS, I ran out of time :) 
+```ts 
+ function addThree(num: int): int => {
+    return num+3
+ }
+ ```
+
+ ### Array.map()
+- The `Array.map()` method creates a new array from an existing one.
+- It loops through each item in the original array, transforms it in some way, and then pushes it into a new array. All of this happens behind-the-scenes.
+- For example, let’s say you had an array of numbers, and you wanted to create a new array with the numbers doubled: 
+
+```js
+let numbers = [3, 11, 42];
+let doubled = [];
+
+numbers.forEach(function (number) {
+    doubled.push(number * 2);
+})
+```
+
+- With `Array.map()`, you don’t have to create the doubled array beforehand. You can define the variable as the output of `Array.map()`.
+ - Inside the `Array.map()` callback function, return the value you want added to the array. Under-the-hood, `Array.map()` loops through each item in the original array, runs your callback method on each item, creates a new array, and pushes whatever you return to it: 
+
+```js
+let doubled = numbers.map(function (number) {
+	return number * 2;
+});
+```
+
+(live demo link)[https://codepen.io/Kat-Connolly/pen/gOyJyWN?editors=1111]
+
+// Time for .filter?
