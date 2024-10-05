@@ -8,7 +8,7 @@ QUICK REFRESHERS ON THOSE CONCEPTS?
 (Code references from Lakin)[https://gist.github.com/lakinwecker/ff524645f25981cd9692b1bef60c7e67]
 
 ## Takeaways from this class
-Why does this help up write better code? Why do we like this?
+Why does this help us write better code? Why do we like this?
 
 ## Lesson 1: functions and types
 
@@ -81,9 +81,20 @@ const num = "Joe";
     formatOperation(-2, Math.abs));
 ```
 ---------
+## Lesson 3: Higher Order Functions
+### Pure vs impure functions
+- Impure functions have side effects: 
+    - Anything that changes about a program that can't be observed by the output  of a function
+    - EX: printing to the console, updating a DB
 
-## Lesson 2: Partial Application 
+### What is a higher order function? 
+A: In mathematics and computer science, a higher-order function (HOF) is a function that does at least one of the following:
 
+- takes one or more functions as arguments (i.e. a procedural parameter, which is a parameter of a procedure that is itself a procedure),
+- returns a function as its result.
+---------
+
+## Lesson 4: Partial Application 
 ### Definitions: 
 - Application: The process of applying a function to its arguments in order to produce a return value.
 
@@ -96,20 +107,7 @@ const num = "Joe";
 (A good breakdown of concepts)[https://medium.com/javascript-scene/curry-or-partial-application-8150044c78b8]
 
 ---------
-## Lesson 3: Higher Order Functions
-### Pure vs impure functions
-- Impure functions have side effects: 
-    - Anything that changes about a program that can't be observed by the output  of a function
-    - EX: printing to the console, updating a DB
-
-### What is a higher order function? 
-A: In mathematics and computer science, a higher-order function (HOF) is a function that does at least one of the following:
-
-- takes one or more functions as arguments (i.e. a procedural parameter, which is a parameter of a procedure that is itself a procedure),
-- returns a function as its result.
-
----------
-## Lesson 4: Practical application
+## Lesson 5: Practical application
 
 ** TODO: convert these to TS, I ran out of time :) 
 ```ts 

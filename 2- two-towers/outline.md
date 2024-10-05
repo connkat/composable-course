@@ -13,6 +13,18 @@
 ## Draws from: 
 - 
 
+## Lesson 1:  Types  = good
+- Update previous work to not use `any`. 
+- Syntax for function types
+
+## Lesson 2: Generic types = better
+- Syntax walkthrough
+- Figure out a function that can take .map or .filter for the same end
+- Generic React list Component? 
+
+## Takeaway
+- Find a take home one
+
 
 ## End goal: 
 - rewriting high order functions generically 
